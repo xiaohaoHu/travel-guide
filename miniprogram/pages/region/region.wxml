@@ -1,0 +1,38 @@
+<view class="page-region">
+  <!-- 顶部装饰 -->
+  <view class="region-banner">
+    <text class="region-banner-title">✧ 探索世界每个角落 ♡</text>
+  </view>
+
+  <!-- 按省份分组展示 -->
+  <view class="province-section" wx:for="{{provinceList}}" wx:key="province">
+    <view class="province-header flex-row">
+      <text class="province-icon">♥</text>
+      <text class="province-name">{{item.province}}</text>
+      <text class="province-count">{{item.totalCount}} 篇攻略</text>
+    </view>
+    <view class="city-grid">
+      <view
+        class="city-card card"
+        wx:for="{{item.cities}}"
+        wx:for-item="city"
+        wx:key="name"
+        bindtap="goGuideList"
+        data-city="{{city.name}}"
+      >
+        <text class="city-name">{{city.name}}</text>
+        <text class="city-count">♡ {{city.count}} 篇</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-wrap" wx:if="{{!loading && provinceList.length === 0}}">
+    <text class="empty-hearts">♥ ♡ ♥</text>
+    <text class="empty-text">还没有攻略，快去发布第一篇吧 ♡</text>
+  </view>
+
+  <view class="load-more" wx:if="{{loading}}">
+    <text class="twinkle">♡</text>
+    <text> 加载中...</text>
+  </view>
+</view>

@@ -1,0 +1,81 @@
+<view class="page-index">
+  <!-- 搜索栏 -->
+  <view class="search-bar flex-row" bindtap="onSearchTap">
+    <view class="search-input flex-row flex-1">
+      <text class="search-icon heart-beat">♡</text>
+      <text class="search-placeholder">搜索心动攻略、美食...</text>
+      <text class="search-star twinkle">✦</text>
+    </view>
+  </view>
+
+  <!-- 浪漫横幅 -->
+  <view class="love-banner card">
+    <view class="banner-deco">♥</view>
+    <text class="banner-title">妻子的浪漫旅行</text>
+    <text class="banner-sub">记录每一次心动旅程，分享爱与美食 ♡</text>
+  </view>
+
+  <!-- 热门城市 -->
+  <view class="section" wx:if="{{hotCities.length > 0}}">
+    <view class="section-header flex-between">
+      <view class="flex-row">
+        <text class="section-icon twinkle">✧</text>
+        <text class="section-title">热门城市</text>
+      </view>
+      <text class="section-more" bindtap="goRegionList">更多 ›</text>
+    </view>
+    <scroll-view class="region-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="region-list flex-row">
+        <view
+          class="region-item"
+          wx:for="{{hotCities}}"
+          wx:key="city"
+          bindtap="goGuideList"
+          data-city="{{item.city}}"
+        >
+          <view class="region-cover-wrap">
+            <view class="region-cover region-cover-text flex-center flex-column">
+              <text class="region-cover-name">{{item.city}}</text>
+              <text class="region-cover-prov">{{item.province}}</text>
+            </view>
+            <view class="region-heart">♥</view>
+          </view>
+          <text class="region-name">{{item.city}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 攻略列表标题 -->
+  <view class="guide-list-header flex-between" style="padding: 20rpx 24rpx 0;">
+    <view class="flex-row">
+      <text class="section-icon twinkle">✧</text>
+      <text class="section-title">心动攻略</text>
+    </view>
+  </view>
+
+  <!-- 攻略列表 -->
+  <view class="guide-list" wx:if="{{guides.length > 0}}">
+    <guide-card
+      wx:for="{{guides}}"
+      wx:key="_id"
+      guide="{{item}}"
+    />
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-wrap" wx:if="{{!loading && guides.length === 0}}">
+    <view class="empty-hearts">♥ ♡ ♥</view>
+    <text class="empty-text">还没有攻略呢~</text>
+    <text class="empty-sub">快写下你的第一段心动旅程吧 ♡</text>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{loading}}">
+    <text class="twinkle">♡</text>
+    <text> 加载中...</text>
+  </view>
+  <view class="load-more" wx:if="{{!loading && noMore && guides.length > 0}}">
+    <text>- 没有更多啦 ♡ -</text>
+  </view>
+</view>

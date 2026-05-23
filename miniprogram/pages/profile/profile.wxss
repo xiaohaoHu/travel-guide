@@ -1,0 +1,195 @@
+.page-profile {
+  padding-bottom: 20rpx;
+}
+
+/* 头部 */
+.profile-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-bg {
+  height: 320rpx;
+  background: linear-gradient(135deg, #FF6B9D 0%, #FF8FB1 40%, #E8B4F8 100%);
+  position: relative;
+}
+
+.bg-deco1 {
+  position: absolute;
+  top: 40rpx;
+  left: 60rpx;
+  font-size: 36rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.bg-deco2 {
+  position: absolute;
+  top: 80rpx;
+  right: 80rpx;
+  font-size: 60rpx;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.bg-deco3 {
+  position: absolute;
+  bottom: 60rpx;
+  left: 120rpx;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.profile-info {
+  position: relative;
+  margin: -90rpx 40rpx 0;
+  z-index: 1;
+}
+
+.profile-avatar-wrap {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  padding: 6rpx;
+  background: linear-gradient(135deg, #FF6B9D, #FFD0E0, #B088F9);
+  flex-shrink: 0;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+}
+
+.profile-detail {
+  margin-left: 32rpx;
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #5A4A5A;
+}
+
+.profile-stats {
+  margin-top: 16rpx;
+  gap: 32rpx;
+  align-items: center;
+}
+
+.stat-box {
+  gap: 4rpx;
+}
+
+.stat-num {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #FF6B9D;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #CC88AA;
+}
+
+.stat-divider {
+  font-size: 20rpx;
+  color: #FFD0E0;
+}
+
+/* 登录区域 */
+.profile-login {
+  position: relative;
+  margin: -90rpx 40rpx 0;
+  z-index: 1;
+  padding-top: 20rpx;
+  text-align: center;
+}
+
+.login-hearts {
+  font-size: 40rpx;
+  color: #FFD0E0;
+  letter-spacing: 12rpx;
+}
+
+.login-text {
+  display: block;
+  font-size: 26rpx;
+  color: #CC88AA;
+  margin: 16rpx 0;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #FF6B9D, #FF8FB1);
+  color: #fff;
+  border-radius: 48rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  width: 280rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 157, 0.35);
+}
+
+.login-btn::after {
+  border: none;
+}
+
+/* Tab切换 */
+.profile-tabs {
+  margin: 36rpx 24rpx 0;
+  border-bottom: 2rpx dashed rgba(255, 107, 157, 0.2);
+  gap: 48rpx;
+}
+
+.profile-tab {
+  font-size: 30rpx;
+  color: #CCBBCC;
+  padding-bottom: 16rpx;
+  position: relative;
+}
+
+.tab-active {
+  color: #FF6B9D;
+  font-weight: 700;
+}
+
+.tab-active::after {
+  content: '♥';
+  position: absolute;
+  bottom: -12rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16rpx;
+  color: #FF6B9D;
+}
+
+/* 列表 */
+.profile-list {
+  padding: 20rpx 24rpx;
+}
+
+/* 空状态 */
+.empty-wrap {
+  text-align: center;
+  padding: 100rpx 0;
+}
+
+.empty-hearts {
+  font-size: 48rpx;
+  color: #FFD0E0;
+  letter-spacing: 16rpx;
+}
+
+.empty-text {
+  display: block;
+  font-size: 28rpx;
+  color: #CCBBCC;
+  margin-top: 24rpx;
+}
+
+.load-more {
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 24rpx;
+  color: #CCBBCC;
+}

@@ -1,0 +1,48 @@
+<view class="guide-card card" bindtap="onTapCard">
+  <!-- 封面图 -->
+  <view class="card-cover-wrap">
+    <image
+      class="card-cover"
+      src="{{guide.images[0] || '/images/placeholder.png'}}"
+      mode="aspectFill"
+      lazy-load
+    />
+    <!-- 景点名称标签 -->
+    <view class="card-cover-spot" wx:if="{{guide.spotName}}">
+      🏛 {{guide.spotName}}
+    </view>
+    <!-- 私密标记 -->
+    <view class="card-cover-private" wx:if="{{guide.isPublic === false}}">
+      🔒 私密
+    </view>
+    <!-- 城市标签 -->
+    <view class="card-cover-city">
+      📍 {{guide.city || guide.region}}
+    </view>
+  </view>
+  <!-- 信息区 -->
+  <view class="card-info">
+    <text class="card-title text-ellipsis-2">{{guide.title}}</text>
+    <view class="card-meta flex-row">
+      <text class="card-food-count" wx:if="{{guide.foods.length > 0}}">🍜 {{guide.foods.length}} 道美食推荐</text>
+    </view>
+    <view class="card-bottom flex-between">
+      <view class="card-author flex-row">
+        <view class="author-avatar-wrap">
+          <image class="author-avatar" src="{{guide.author.avatarUrl || '/images/placeholder.png'}}" mode="aspectFill" />
+        </view>
+        <text class="author-name text-ellipsis">{{guide.author.nickName || '匿名旅人'}}</text>
+      </view>
+      <view class="card-stats flex-row">
+        <view class="stat-item flex-row">
+          <text class="stat-heart">♥</text>
+          <text class="stat-num">{{guide.likes || 0}}</text>
+        </view>
+        <view class="stat-item flex-row">
+          <text class="stat-eye">👁</text>
+          <text class="stat-num">{{guide.viewCount || 0}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

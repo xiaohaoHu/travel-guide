@@ -1,0 +1,15 @@
+.empty-state {
+  padding: 120rpx 0;
+}
+
+.empty-hearts {
+  font-size: 56rpx;
+  color: #FFD0E0;
+  letter-spacing: 16rpx;
+}
+
+.empty-text {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  color: #CCBBCC;
+}

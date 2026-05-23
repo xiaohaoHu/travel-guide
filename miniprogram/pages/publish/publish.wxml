@@ -1,0 +1,128 @@
+<view class="page-publish">
+  <view class="form card">
+    <!-- 标题 -->
+    <view class="form-item">
+      <text class="form-label">标题 <text class="required">*</text></text>
+      <input
+        class="form-input"
+        placeholder="给你的攻略起个标题"
+        value="{{title}}"
+        bindinput="onTitleInput"
+        maxlength="50"
+      />
+      <text class="form-count">{{title.length}}/50</text>
+    </view>
+
+    <!-- 地区选择 - 省市区三级 -->
+    <view class="form-item">
+      <text class="form-label">目的地 <text class="required">*</text></text>
+      <picker mode="region" bindchange="onRegionChange" value="{{regionArray}}">
+        <view class="form-picker {{region ? '' : 'placeholder'}}">
+          {{region || '请选择省/市/区'}}
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+      <!-- 精确度选择 -->
+      <view class="region-level flex-row" wx:if="{{region}}">
+        <view class="level-tag {{regionLevel === 'district' ? 'level-active' : ''}}" bindtap="setRegionLevel" data-level="district">精确到区</view>
+        <view class="level-tag {{regionLevel === 'city' ? 'level-active' : ''}}" bindtap="setRegionLevel" data-level="city">仅到市级</view>
+      </view>
+      <text class="region-preview" wx:if="{{region}}">显示为：{{displayRegion}}</text>
+    </view>
+
+    <!-- 景点名称 -->
+    <view class="form-item">
+      <text class="form-label">景点名称</text>
+      <input
+        class="form-input"
+        placeholder="这篇攻略对应的景点，如：宽窄巷子"
+        value="{{spotName}}"
+        bindinput="onSpotNameInput"
+        maxlength="30"
+      />
+      <text class="form-count">{{spotName.length}}/30</text>
+    </view>
+
+    <!-- 正文 -->
+    <view class="form-item">
+      <text class="form-label">正文</text>
+      <textarea
+        class="form-textarea"
+        placeholder="分享你的旅行故事、景点推荐..."
+        value="{{content}}"
+        bindinput="onContentInput"
+        maxlength="5000"
+      />
+      <text class="form-count">{{content.length}}/5000</text>
+    </view>
+
+    <!-- 当地美食推荐 -->
+    <view class="form-item">
+      <text class="form-label">当地美食推荐</text>
+      <view class="foods-list">
+        <view class="food-item card" wx:for="{{foods}}" wx:key="index">
+          <view class="food-item-header flex-between">
+            <text class="food-index">♡ 美食 {{index + 1}}</text>
+            <text class="food-delete" catchtap="deleteFood" data-index="{{index}}">删除</text>
+          </view>
+          <input
+            class="food-input"
+            placeholder="美食名称，如：火锅"
+            value="{{item.name}}"
+            bindinput="onFoodNameInput"
+            data-index="{{index}}"
+          />
+          <input
+            class="food-input"
+            placeholder="推荐理由（选填），如：麻辣鲜香，必吃！"
+            value="{{item.reason}}"
+            bindinput="onFoodReasonInput"
+            data-index="{{index}}"
+          />
+        </view>
+        <view class="food-add" bindtap="addFood" wx:if="{{foods.length < 10}}">
+          <text>+ 添加一道美食推荐</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 图片上传 -->
+    <view class="form-item">
+      <text class="form-label">图片（最多9张）</text>
+      <view class="image-list flex-row">
+        <view class="image-item" wx:for="{{imageList}}" wx:key="*this">
+          <image
+            class="preview-image"
+            src="{{item}}"
+            mode="aspectFill"
+            bindtap="previewImage"
+            data-index="{{index}}"
+          />
+          <view class="image-delete" catchtap="deleteImage" data-index="{{index}}">✕</view>
+        </view>
+        <view class="image-add" bindtap="chooseImage" wx:if="{{imageList.length < 9}}">
+          <text class="add-icon">+</text>
+          <text class="add-text">{{imageList.length}}/9</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 隐私设置 -->
+  <view class="form-item">
+    <view class="privacy-row flex-between">
+      <view class="privacy-info flex-column">
+        <text class="privacy-label">♡ 公开攻略</text>
+        <text class="privacy-desc">{{isPublic ? '所有人可以看到这篇攻略' : '仅自己可见'}}</text>
+      </view>
+      <switch class="privacy-switch" checked="{{isPublic}}" bindchange="togglePublic" color="#FF6B9D" />
+    </view>
+  </view>
+
+  <!-- 发布按钮 -->
+  <view class="publish-btn-wrapper safe-bottom">
+    <button class="btn-primary publish-btn" bindtap="onPublish" loading="{{publishing}}" disabled="{{publishing}}">
+      发布攻略
+    </button>
+  </view>
+</view>

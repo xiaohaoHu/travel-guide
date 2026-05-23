@@ -1,0 +1,92 @@
+<view class="page-detail" wx:if="{{guide}}">
+  <!-- 图片轮播 -->
+  <swiper
+    class="detail-swiper"
+    indicator-dots="{{guide.images.length > 1}}"
+    indicator-active-color="#FF6B9D"
+    circular
+    autoplay
+    wx:if="{{guide.images.length > 0}}"
+  >
+    <swiper-item wx:for="{{guide.images}}" wx:key="*this">
+      <image
+        class="swiper-image"
+        src="{{item}}"
+        mode="aspectFill"
+        bindtap="previewImage"
+        data-url="{{item}}"
+      />
+    </swiper-item>
+  </swiper>
+
+  <!-- 攻略信息 -->
+  <view class="detail-header card">
+    <text class="detail-title">{{guide.title}}</text>
+    <view class="detail-spot" wx:if="{{guide.spotName}}">
+      <text class="detail-spot-icon">🏛</text>
+      <text class="detail-spot-name">{{guide.spotName}}</text>
+    </view>
+    <view class="detail-meta flex-row">
+      <view class="detail-region-tag">📍 {{guide.region}}</view>
+      <text class="detail-time">{{createTimeText}}</text>
+    </view>
+    <view class="detail-author flex-row">
+      <view class="author-avatar-wrap">
+        <image class="author-avatar" src="{{guide.author.avatarUrl || '/images/placeholder.png'}}" mode="aspectFill" />
+      </view>
+      <text class="author-name">{{guide.author.nickName || '匿名旅人'}}</text>
+    </view>
+  </view>
+
+  <!-- 攻略正文 -->
+  <view class="detail-content card">
+    <view class="content-deco">♡</view>
+    <text class="content-text">{{guide.content}}</text>
+  </view>
+
+  <!-- 当地美食推荐 -->
+  <view class="detail-foods card" wx:if="{{guide.foods.length > 0}}">
+    <view class="foods-header flex-row">
+      <text class="foods-title">♡ 当地美食推荐</text>
+      <text class="foods-count">{{guide.foods.length}} 道</text>
+    </view>
+    <view class="foods-list">
+      <view class="food-card" wx:for="{{guide.foods}}" wx:key="index">
+        <view class="food-dot"></view>
+        <view class="food-info">
+          <text class="food-name">{{item.name}}</text>
+          <text class="food-reason" wx:if="{{item.reason}}">{{item.reason}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 互动栏 -->
+  <view class="detail-actions flex-row">
+    <view class="action-item flex-column flex-center {{hasLiked ? 'liked' : ''}}" bindtap="toggleLike">
+      <text class="action-icon heart-beat">♥</text>
+      <text class="action-text">{{guide.likes || 0}}</text>
+    </view>
+    <view class="action-item flex-column flex-center">
+      <text class="action-icon">👁</text>
+      <text class="action-text">{{guide.viewCount || 0}}</text>
+    </view>
+    <view class="action-item flex-column flex-center" bindtap="onShare">
+      <text class="action-icon">↗</text>
+      <text class="action-text">分享</text>
+    </view>
+  </view>
+
+  <!-- 作者其他攻略 -->
+  <view class="author-guides" wx:if="{{authorGuides.length > 0}}">
+    <view class="section-header flex-row">
+      <text class="section-icon twinkle">✧</text>
+      <text class="section-title">TA 的更多心动旅程</text>
+    </view>
+    <guide-card
+      wx:for="{{authorGuides}}"
+      wx:key="_id"
+      guide="{{item}}"
+    />
+  </view>
+</view>

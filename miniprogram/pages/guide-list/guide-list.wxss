@@ -1,0 +1,75 @@
+.page-guide-list {
+  padding-bottom: 20rpx;
+}
+
+/* 筛选区 */
+.filter-bar {
+  margin: 20rpx 24rpx;
+  padding: 20rpx 24rpx;
+  background: linear-gradient(135deg, #FFF5F7 0%, #FFF0FF 100%);
+  border: 2rpx solid rgba(255, 107, 157, 0.1);
+}
+
+.filter-row {
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  font-size: 26rpx;
+  color: #CC88AA;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.filter-options {
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  font-size: 24rpx;
+  color: #CC88AA;
+  padding: 8rpx 28rpx;
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2rpx solid rgba(255, 107, 157, 0.15);
+}
+
+.filter-active {
+  background: linear-gradient(135deg, #FF6B9D, #FF8FB1);
+  color: #fff;
+  border-color: #FF6B9D;
+}
+
+.current-region {
+  margin-top: 12rpx;
+  padding-top: 12rpx;
+  border-top: 2rpx dashed rgba(255, 107, 157, 0.15);
+  justify-content: space-between;
+}
+
+.region-label {
+  font-size: 24rpx;
+  color: #FF6B9D;
+}
+
+.region-clear {
+  font-size: 24rpx;
+  color: #CCBBCC;
+}
+
+.guide-list {
+  padding: 0 24rpx;
+}
+
+.load-more {
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 24rpx;
+  color: #CCBBCC;
+}

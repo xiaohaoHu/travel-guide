@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "guide-card": "/components/guide-card/guide-card",
+    "empty-state": "/components/empty-state/empty-state"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "攻略列表"
+}

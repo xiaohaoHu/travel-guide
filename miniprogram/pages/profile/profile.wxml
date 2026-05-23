@@ -1,0 +1,74 @@
+<view class="page-profile">
+  <!-- 用户信息 -->
+  <view class="profile-header">
+    <view class="profile-bg">
+      <text class="bg-deco1 twinkle">✧</text>
+      <text class="bg-deco2">♥</text>
+      <text class="bg-deco3 twinkle">✦</text>
+    </view>
+    <view class="profile-info flex-row" wx:if="{{userInfo}}">
+      <view class="profile-avatar-wrap">
+        <image class="profile-avatar" src="{{userInfo.avatarUrl || '/images/placeholder.png'}}" mode="aspectFill" />
+      </view>
+      <view class="profile-detail flex-column">
+        <text class="profile-name">{{userInfo.nickName || '旅人'}}</text>
+        <view class="profile-stats flex-row">
+          <view class="stat-box flex-column flex-center">
+            <text class="stat-num">{{myGuideCount}}</text>
+            <text class="stat-label">攻略</text>
+          </view>
+          <text class="stat-divider">♡</text>
+          <view class="stat-box flex-column flex-center">
+            <text class="stat-num">{{totalLikes}}</text>
+            <text class="stat-label">获赞</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="profile-login" wx:if="{{!userInfo}}">
+      <view class="login-hearts">♥ ♡ ♥</view>
+      <text class="login-text">登录后记录你的心动旅程</text>
+      <button class="login-btn" bindtap="onLogin">♡ 点击登录</button>
+    </view>
+  </view>
+
+  <!-- Tab切换 -->
+  <view class="profile-tabs flex-row">
+    <view
+      class="profile-tab {{currentTab === 'my' ? 'tab-active' : ''}}"
+      bindtap="switchTab"
+      data-tab="my"
+    >
+      ♡ 我的攻略
+    </view>
+    <view
+      class="profile-tab {{currentTab === 'liked' ? 'tab-active' : ''}}"
+      bindtap="switchTab"
+      data-tab="liked"
+    >
+      ♥ 我的收藏
+    </view>
+  </view>
+
+  <!-- 攻略列表 -->
+  <view class="profile-list" wx:if="{{guides.length > 0}}">
+    <guide-card
+      wx:for="{{guides}}"
+      wx:key="_id"
+      guide="{{item}}"
+    />
+  </view>
+
+  <view class="empty-wrap" wx:if="{{!loading && guides.length === 0}}">
+    <text class="empty-hearts">♥ ♡ ♥</text>
+    <text class="empty-text">{{currentTab === 'my' ? '还没有发布攻略呢 ♡' : '还没有收藏攻略呢 ♥'}}</text>
+  </view>
+
+  <view class="load-more" wx:if="{{loading}}">
+    <text class="twinkle">♡</text>
+    <text> 加载中...</text>
+  </view>
+  <view class="load-more" wx:if="{{!loading && noMore && guides.length > 0}}">
+    <text>- 没有更多啦 ♡ -</text>
+  </view>
+</view>

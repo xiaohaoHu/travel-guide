@@ -1,0 +1,126 @@
+/* 全局样式 - 二次元恋爱风 */
+page {
+  background-color: #FFF5F7;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 28rpx;
+  color: #5A4A5A;
+  box-sizing: border-box;
+}
+
+/* 主题色 */
+.theme-color {
+  color: #FF6B9D;
+}
+
+.theme-bg {
+  background-color: #FF6B9D;
+}
+
+/* 通用容器 */
+.container {
+  padding: 20rpx;
+}
+
+/* 通用卡片样式 */
+.card {
+  background-color: #FFFFFF;
+  border-radius: 32rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.12);
+  border: 2rpx solid rgba(255, 107, 157, 0.08);
+}
+
+/* 通用按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #FF6B9D 0%, #FF8FB1 100%);
+  color: #FFFFFF;
+  border-radius: 48rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 157, 0.35);
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+/* 爱心动画 */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.heart-beat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* 闪烁星星 */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* 浮动爱心装饰 */
+@keyframes float-up {
+  0% { opacity: 0; transform: translateY(0) scale(0.5); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-200rpx) scale(1.2); }
+}
+
+/* 文字省略 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* flex 布局 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 安全区域 */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

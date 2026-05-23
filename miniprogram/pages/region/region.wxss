@@ -1,0 +1,96 @@
+.page-region {
+  padding-bottom: 20rpx;
+}
+
+.region-banner {
+  text-align: center;
+  padding: 32rpx 24rpx 20rpx;
+}
+
+.region-banner-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #FF6B9D;
+}
+
+/* 省份分组 */
+.province-section {
+  margin: 0 24rpx 24rpx;
+}
+
+.province-header {
+  padding: 16rpx 0 12rpx;
+  gap: 10rpx;
+  align-items: baseline;
+}
+
+.province-icon {
+  font-size: 24rpx;
+  color: #FF6B9D;
+}
+
+.province-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #5A4A5A;
+}
+
+.province-count {
+  font-size: 22rpx;
+  color: #CCBBCC;
+  margin-left: 12rpx;
+}
+
+/* 城市网格 */
+.city-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.city-card {
+  padding: 16rpx 24rpx;
+  margin-bottom: 0;
+  min-width: 140rpx;
+  text-align: center;
+}
+
+.city-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #5A4A5A;
+  display: block;
+}
+
+.city-count {
+  font-size: 20rpx;
+  color: #FF6B9D;
+  margin-top: 6rpx;
+  display: block;
+}
+
+/* 空状态 */
+.empty-wrap {
+  text-align: center;
+  padding: 100rpx 0;
+}
+
+.empty-hearts {
+  font-size: 48rpx;
+  color: #FFD0E0;
+  letter-spacing: 16rpx;
+}
+
+.empty-text {
+  display: block;
+  font-size: 28rpx;
+  color: #CCBBCC;
+  margin-top: 24rpx;
+}
+
+.load-more {
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 24rpx;
+  color: #CCBBCC;
+}
