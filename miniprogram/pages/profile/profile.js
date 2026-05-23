@@ -156,5 +156,12 @@ Page({
     if (!this.data.noMore && !this.data.loading) {
       this.loadGuides(false)
     }
+  },
+
+  goDetail(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/guide-detail/guide-detail?id=' + id
+    })
   }
 })

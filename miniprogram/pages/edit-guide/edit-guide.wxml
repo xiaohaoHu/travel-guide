@@ -1,0 +1,55 @@
+<view class="page-edit">
+  <view class="form card">
+    <!-- 标题 -->
+    <view class="form-item">
+      <text class="form-label">标题 <text class="required">*</text></text>
+      <input class="form-input" placeholder="攻略标题" value="{{title}}" bindinput="onTitleInput" maxlength="50" />
+    </view>
+
+    <!-- 正文 -->
+    <view class="form-item">
+      <text class="form-label">正文</text>
+      <textarea class="form-textarea" placeholder="分享你的旅行故事..." value="{{content}}" bindinput="onContentInput" maxlength="5000" />
+    </view>
+
+    <!-- 美食推荐 -->
+    <view class="form-item">
+      <text class="form-label">美食推荐</text>
+      <view class="foods-list">
+        <view class="food-item" wx:for="{{foods}}" wx:key="index">
+          <view class="food-item-header flex-between">
+            <text class="food-index">♡ 美食 {{index + 1}}</text>
+            <text class="food-delete" catchtap="deleteFood" data-index="{{index}}">删除</text>
+          </view>
+          <input class="food-input" placeholder="美食名称" value="{{item.name}}" bindinput="onFoodNameInput" data-index="{{index}}" />
+          <input class="food-input" placeholder="推荐理由（选填）" value="{{item.reason}}" bindinput="onFoodReasonInput" data-index="{{index}}" />
+        </view>
+        <view class="food-add" bindtap="addFood" wx:if="{{foods.length < 10}}">
+          <text>+ 添加美食推荐</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 图片 -->
+    <view class="form-item">
+      <text class="form-label">图片</text>
+      <view class="image-list flex-row">
+        <view class="image-item" wx:for="{{imageList}}" wx:key="*this">
+          <image class="preview-image" src="{{item}}" mode="aspectFill" bindtap="previewImage" data-index="{{index}}" />
+          <view class="image-delete" catchtap="deleteImage" data-index="{{index}}">✕</view>
+        </view>
+        <view class="image-add" bindtap="chooseImage" wx:if="{{imageList.length < 9}}">
+          <text class="add-icon">+</text>
+          <text class="add-text">{{imageList.length}}/9</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="save-btn-wrapper safe-bottom">
+    <button class="btn-primary save-btn" bindtap="onSave" loading="{{saving}}" disabled="{{saving}}">
+      保存修改
+    </button>
+  </view>
+</view>

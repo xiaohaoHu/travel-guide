@@ -106,6 +106,53 @@
   color: rgba(255, 107, 157, 0.08);
 }
 
+/* 隐私设置+编辑（仅作者） */
+.detail-author-actions {
+  margin-top: 20rpx;
+}
+
+.author-action-row {
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.edit-btn {
+  text-align: center;
+  padding: 20rpx;
+  background: linear-gradient(135deg, #FF6B9D, #FF8FB1);
+  color: #fff;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  box-shadow: 0 6rpx 16rpx rgba(255, 107, 157, 0.3);
+}
+
+.delete-btn {
+  text-align: center;
+  padding: 20rpx;
+  margin-top: 16rpx;
+  background: #fff;
+  color: #FF4444;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: 2rpx solid #FF4444;
+}
+
+.privacy-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #5A4A5A;
+  display: block;
+}
+
+.privacy-desc {
+  font-size: 22rpx;
+  color: #CCBBCC;
+  margin-top: 4rpx;
+  display: block;
+}
+
 .content-text {
   font-size: 30rpx;
   color: #5A4A5A;
@@ -219,24 +266,10 @@
   color: #FF6B9D;
 }
 
-/* 作者其他攻略 */
-.author-guides {
-  margin-top: 20rpx;
-  padding: 0 24rpx;
-}
-
-.section-header {
-  padding: 16rpx 0;
-  gap: 10rpx;
-}
-
-.section-icon {
-  font-size: 24rpx;
+.action-item.favorited .action-icon {
   color: #FFD700;
 }
 
-.section-title {
-  font-size: 30rpx;
-  font-weight: 700;
-  color: #5A4A5A;
+.action-item.favorited .action-text {
+  color: #FFD700;
 }

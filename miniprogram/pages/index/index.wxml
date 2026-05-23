@@ -46,21 +46,39 @@
     </scroll-view>
   </view>
 
-  <!-- 攻略列表标题 -->
-  <view class="guide-list-header flex-between" style="padding: 20rpx 24rpx 0;">
-    <view class="flex-row">
-      <text class="section-icon twinkle">✧</text>
-      <text class="section-title">心动攻略</text>
+  <!-- 排序导航栏 -->
+  <view class="sort-bar flex-row">
+    <view class="sort-item {{currentSort === 'latest' ? 'sort-active' : ''}}" bindtap="switchSort" data-sort="latest">
+      <text>最新</text>
+    </view>
+    <view class="sort-divider">|</view>
+    <view class="sort-item {{currentSort === 'hot' ? 'sort-active' : ''}}" bindtap="switchSort" data-sort="hot">
+      <text>♥ 点赞最多</text>
     </view>
   </view>
 
-  <!-- 攻略列表 -->
-  <view class="guide-list" wx:if="{{guides.length > 0}}">
-    <guide-card
-      wx:for="{{guides}}"
-      wx:key="_id"
-      guide="{{item}}"
-    />
+  <!-- 攻略列表 - 两列网格 -->
+  <view class="guide-grid" wx:if="{{guides.length > 0}}">
+    <view class="guide-grid-item" wx:for="{{guides}}" wx:key="_id" bindtap="goDetail" data-id="{{item._id}}">
+      <!-- 封面图 -->
+      <view class="grid-cover-wrap">
+        <image class="grid-cover" src="{{item.images[0] || '/images/placeholder.png'}}" mode="aspectFill" lazy-load />
+        <view class="grid-spot" wx:if="{{item.spotName}}">🏛 {{item.spotName}}</view>
+      </view>
+      <!-- 信息区 -->
+      <view class="grid-info">
+        <text class="grid-title text-ellipsis-2">{{item.title}}</text>
+        <view class="grid-meta flex-row">
+          <text class="grid-city">📍 {{item.city || item.region}}</text>
+        </view>
+        <view class="grid-bottom flex-between">
+          <text class="grid-food" wx:if="{{item.foods.length > 0}}">🍜 {{item.foods.length}}</text>
+          <view class="grid-stats flex-row">
+            <text class="grid-heart">♥ {{item.likes || 0}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 
   <!-- 空状态 -->

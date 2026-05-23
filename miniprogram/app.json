@@ -4,6 +4,7 @@
     "pages/region/region",
     "pages/guide-list/guide-list",
     "pages/guide-detail/guide-detail",
+    "pages/edit-guide/edit-guide",
     "pages/publish/publish",
     "pages/profile/profile"
   ],
@@ -18,7 +19,7 @@
     "color": "#CCBBCC",
     "selectedColor": "#FF6B9D",
     "backgroundColor": "#FFF5F7",
-    "borderStyle": "white",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",

@@ -61,11 +61,28 @@
     </view>
   </view>
 
+  <!-- 隐私设置 + 编辑按钮（仅作者可见） -->
+  <view class="detail-author-actions card" wx:if="{{isAuthor}}">
+    <view class="author-action-row flex-between">
+      <view class="privacy-info">
+        <text class="privacy-label">♡ 公开攻略</text>
+        <text class="privacy-desc">{{guide.isPublic !== false ? '所有人可以看到' : '仅自己可见'}}</text>
+      </view>
+      <switch checked="{{guide.isPublic !== false}}" bindchange="togglePublic" color="#FF6B9D" />
+    </view>
+    <view class="edit-btn" bindtap="goEdit">✏ 编辑攻略</view>
+    <view class="delete-btn" bindtap="onDelete">🗑 删除攻略</view>
+  </view>
+
   <!-- 互动栏 -->
   <view class="detail-actions flex-row">
     <view class="action-item flex-column flex-center {{hasLiked ? 'liked' : ''}}" bindtap="toggleLike">
       <text class="action-icon heart-beat">♥</text>
       <text class="action-text">{{guide.likes || 0}}</text>
+    </view>
+    <view class="action-item flex-column flex-center {{hasFavorited ? 'favorited' : ''}}" bindtap="toggleFavorite">
+      <text class="action-icon">⭐</text>
+      <text class="action-text">{{hasFavorited ? '已收藏' : '收藏'}}</text>
     </view>
     <view class="action-item flex-column flex-center">
       <text class="action-icon">👁</text>
@@ -75,18 +92,5 @@
       <text class="action-icon">↗</text>
       <text class="action-text">分享</text>
     </view>
-  </view>
-
-  <!-- 作者其他攻略 -->
-  <view class="author-guides" wx:if="{{authorGuides.length > 0}}">
-    <view class="section-header flex-row">
-      <text class="section-icon twinkle">✧</text>
-      <text class="section-title">TA 的更多心动旅程</text>
-    </view>
-    <guide-card
-      wx:for="{{authorGuides}}"
-      wx:key="_id"
-      guide="{{item}}"
-    />
   </view>
 </view>

@@ -50,13 +50,24 @@
     </view>
   </view>
 
-  <!-- 攻略列表 -->
-  <view class="profile-list" wx:if="{{guides.length > 0}}">
-    <guide-card
-      wx:for="{{guides}}"
-      wx:key="_id"
-      guide="{{item}}"
-    />
+  <!-- 攻略列表 - 两列网格 -->
+  <view class="profile-grid" wx:if="{{guides.length > 0}}">
+    <view class="profile-grid-item" wx:for="{{guides}}" wx:key="_id" bindtap="goDetail" data-id="{{item._id}}">
+      <!-- 私密标记 -->
+      <view class="pgrid-private" wx:if="{{item.isPublic === false}}">🔒</view>
+      <!-- 封面图 -->
+      <view class="pgrid-cover-wrap">
+        <image class="pgrid-cover" src="{{item.images[0] || '/images/placeholder.png'}}" mode="aspectFill" lazy-load />
+        <view class="pgrid-spot" wx:if="{{item.spotName}}">🏛 {{item.spotName}}</view>
+      </view>
+      <view class="pgrid-info">
+        <text class="pgrid-title text-ellipsis-2">{{item.title}}</text>
+        <view class="pgrid-meta flex-between">
+          <text class="pgrid-city">📍 {{item.city || item.region}}</text>
+          <text class="pgrid-heart">♥ {{item.likes || 0}}</text>
+        </view>
+      </view>
+    </view>
   </view>
 
   <view class="empty-wrap" wx:if="{{!loading && guides.length === 0}}">

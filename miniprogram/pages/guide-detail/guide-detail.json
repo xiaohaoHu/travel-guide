@@ -1,7 +1,4 @@
 {
-  "usingComponents": {
-    "guide-card": "/components/guide-card/guide-card",
-    "empty-state": "/components/empty-state/empty-state"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "攻略详情"
 }
